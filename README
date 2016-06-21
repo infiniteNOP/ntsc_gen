@@ -1,0 +1,47 @@
+This is a crude NTSC generator, which I wrote in order to provide rudimentary
+graphics capabilities for my nopCPU project. Currently, it is only capable of
+producing black and white video. In order to use this in a real circuit,
+configure dacout to use 5V TTL logic levels, and connect it to your TV's 
+composite input based on the following diagram:
+
+
+             |----|
+--dacout(1)--|450Ω|---|
+             |----|   |
+                      |
+                      |
+                      |
+              |----|  |
+--dacout(0)---|900Ω|--|-----TV in---
+              |----|
+
+(Best viewed using a monospace font)
+
+
+Copyright (C) 2016 John Tzonevrakis. For details, please read the COPYING file.
+
+PLEASE NOTE THAT I AM NOT RESPONSIBLE FOR *ANY* DAMANGES THAT MIGHT ARISE AS
+A RESULT OF USING THIS MODULE, INCLUDING DAMAGES TO LIFE AND/OR PROPERTY!!!
+
+TODO:
+
+(1) Test it with an actual TV (Timing looks OK in simulation :>)
+(2) Implement a proper character generator over this thing
+(3) Add colo(u)r!
+
+Due to the wide variety of FPGA vendors and synthesis tools, I cannot provide
+specific instructions on synthesizing and using this piece of code. However,
+please do keep in mind that this generator has been designed for use with a
+10 MHz clock. Any different frequency will result in timing errors.
+
+If all you want is to test the timing of the module, you will need iverilog
+and a vcd viewer (in my opinion, gtkwave is quite a fine tool for this job).
+Invoke iverilog in the following way:
+
+iverilog gen_tb.v gen.v -o ntsc_gen
+
+Then, run ntsc_gen, and stop it after the desirable amount of time units
+has passed, by pressing CTRL+C and then typing "finish" in the command
+prompt that appears.
+
+That's all folks, have a lot of fun!
