@@ -19,26 +19,26 @@
 
 `timescale 1ns / 1ps
 module gen_tb;
-	reg clk, reset;
-	wire [8:0] pixelmem_address;
-	wire [1:0] dacout;
-	video vid0(clk, reset, 2'b11, pixelmem_address, dacout);
+    reg clk, reset;
+    wire [8:0] pixelmem_address;
+    wire [1:0] dacout;
+    video vid0(clk, reset, 2'b11, pixelmem_address, dacout);
         initial
         begin
-		$display("ntsc_gen testbench. All waveforms will be dumped to the dump.vcd file.");
-		$dumpfile("waves.vcd");
-		$dumpvars(0, vid0);
-		$monitor("Clock: %b Reset: %b \nAddress: %h\n Output: %b\nTime: %d\n",clk,reset,pixelmem_address,dacout,$time);
-		clk = 1'b1;
-		reset = 1'b1;
-		@(posedge clk);
-		@(posedge clk);
-		reset = 1'b0;
+        $display("ntsc_gen testbench. All waveforms will be dumped to the dump.vcd file.");
+        $dumpfile("waves.vcd");
+        $dumpvars(0, vid0);
+        $monitor("Clock: %b Reset: %b \nAddress: %h\n Output: %b\nTime: %d\n",clk,reset,pixelmem_address,dacout,$time);
+        clk = 1'b1;
+        reset = 1'b1;
+        @(posedge clk);
+        @(posedge clk);
+        reset = 1'b0;
         end
-	always
-	begin
-		forever begin
-			#50 clk = !clk;
-		end
-	end
+    always
+    begin
+        forever begin
+            #50 clk = !clk;
+        end
+    end
 endmodule //gen_tb

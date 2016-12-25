@@ -1,22 +1,25 @@
 This is a crude NTSC generator, which I wrote in order to provide rudimentary
-graphics capabilities for my nopCPU project. Currently, it is only capable of
-producing black and white video. In order to use this in a real circuit,
-configure dacout to use 5V TTL logic levels, and connect it to your TV's 
-composite input based on the following diagram:
+graphics capabilities for my nopCPU project. It is capable of generating
+a black-and-white 320x240 video signal, and requires a 2-bit-wide and 
+76800-words-deep memory module (For details, read comments inside gen.v).
+In order to use this in a real circuit, configure dacout to use 
+3.3V logic levels, and build the following circuit:
 
 
              |----|
---dacout(1)--|450Ω|---|
+--dacout(1)--|270Ω|---|
              |----|   |
                       |
                       |
                       |
               |----|  |
---dacout(0)---|900Ω|--|-----TV in---
+--dacout(0)---|680Ω|--|-----TV in---
               |----|
 
 (Best viewed using a monospace font)
 
+The required voltages are generated via a resistive divider that is formed
+with the video input's internal 75Ω impedance.
 
 Copyright (C) 2016 John Tzonevrakis. For details, please read the COPYING file.
 
@@ -26,7 +29,7 @@ A RESULT OF USING THIS MODULE, INCLUDING DAMAGES TO LIFE AND/OR PROPERTY!!!
 TODO:
 
 (1) Test it with an actual TV (Timing looks OK in simulation :>)
-(2) Implement a proper character generator over this thing
+(2) Implement a proper character generator for this thing
 (3) Add colo(u)r!
 
 Due to the wide variety of FPGA vendors and synthesis tools, I cannot provide
