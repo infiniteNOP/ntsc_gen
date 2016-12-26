@@ -21,6 +21,16 @@ In order to use this in a real circuit, configure dacout to use
 The required voltages are generated via a resistive divider that is formed
 with the video input's internal 75Ω impedance.
 
+Supported colo(u)rs:
+
+2'b01: Black
+2'b10: Gray
+2'b11: White
+
+WARNING: DO NOT attempt storing 2'b00 in the pixel memory, as doing so will
+make the generator output sync levels prematurely, and, as such, will confuse 
+your TV, and make it produce garbled frames. THIS IS NOT A BUG!
+
 Copyright (C) 2016 John Tzonevrakis. For details, please read the COPYING file.
 
 PLEASE NOTE THAT I AM NOT RESPONSIBLE FOR *ANY* DAMANGES THAT MIGHT ARISE AS
