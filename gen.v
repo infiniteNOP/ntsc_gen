@@ -38,8 +38,8 @@ reg [16:0] x; /* With a clock of 10MHz, we can scan exactly
                  HOWEVER, such a resolution will not be aesthetically pleasant:
                  Most common display resolutions are proportionate
                  either to 4/3 or 16/9. By using a mixture of trial and error
-                 and the method of three, we arrive to the "golden" resolution of
-                 320x240 (Of course, we could just consult the Wikipedia
+                 and the method of three, we arrive to the "golden" resolution 
+		 of 320x240 (Of course, we could have consulted the Wikipedia
                  article "List of common resolutions", but where's the fun
                  in that?), which is the same resolution as QVGA.*/
 
@@ -57,7 +57,7 @@ reg [16:0] x; /* With a clock of 10MHz, we can scan exactly
  *
  * It is highly probable that the device that is going to control the
  * generator will run at a differrent, most probably higher, clock rate than
- * the generator, it is recommended to use a true dual-port RAM.
+ * the generator, therefore it is recommended to use a true dual-port RAM.
  *
  */
 
